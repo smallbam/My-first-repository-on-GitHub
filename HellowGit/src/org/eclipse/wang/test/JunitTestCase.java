@@ -146,5 +146,6 @@ public class JunitTestCase
 		biTree2.printTreeInorder();
 
 		Assert.assertEquals(false, biTree.sameTree(biTree2));
+
 	}
 }
