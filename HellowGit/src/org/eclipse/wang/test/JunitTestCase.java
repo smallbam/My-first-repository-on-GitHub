@@ -139,13 +139,22 @@ public class JunitTestCase
 
 		BinaryTree biTree2 = new BinaryTree();
 		int[] data2 = { 1, 2, 3, 4, 5, 6, 7 };
-		for (int i = 0; i < data.length; i++)
+		for (int i = 0; i < data2.length; i++)
 		{
 			biTree2.insert(data2[i]);
 		}
 		biTree2.printTreeInorder();
 
+		BinaryTree biTree3 = new BinaryTree();
+		int[] data3 = { 2, 1, 6, 7, 5, 4, 3 };
+		for (int i = 0; i < data3.length; i++)
+		{
+			biTree3.insert(data3[i]);
+		}
+		biTree3.printTreeInorder();
+
 		Assert.assertEquals(false, biTree.sameTree(biTree2));
+		Assert.assertEquals(true, biTree.sameTree(biTree3));
 
 	}
 }
