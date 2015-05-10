@@ -45,15 +45,6 @@ public class RemoteFileClient
 		return fileLines.toString();
 	}
 
-	public static void main(String[] args)
-	{
-		RemoteFileClient remoteFileClient = new RemoteFileClient("127.0.0.1", Consts.PORT);
-		remoteFileClient.setUpConnection();
-		String fileContents = remoteFileClient.getFile(Consts.FILE_PATH);
-		remoteFileClient.tearDownConnection();
-		System.out.println(fileContents);
-	}
-
 	public void setUpConnection()
 	{
 		try
@@ -84,5 +75,14 @@ public class RemoteFileClient
 		{
 			System.out.println("Error tearing down socket connection: " + e);
 		}
+	}
+
+	public static void main(String[] args)
+	{
+		RemoteFileClient remoteFileClient = new RemoteFileClient("127.0.0.1", Consts.PORT);
+		remoteFileClient.setUpConnection();
+		String fileContents = remoteFileClient.getFile(Consts.FILE_PATH);
+		remoteFileClient.tearDownConnection();
+		System.out.println(fileContents);
 	}
 }

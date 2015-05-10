@@ -1,1 +1,2 @@
-i am a remote file.
+i am a remote file.Line 1.
+i am a remote file.Line 2.

@@ -6,7 +6,9 @@ package org.eclipse.wang.net;
  */
 public class Consts
 {
-	public static final int PORT = 6260;
+	public static final int PORT = 6062;
 
 	public static final String FILE_PATH = "./data/RemoteFile.txt";
+
+	public static final int BACKLOG = 5;
 }
