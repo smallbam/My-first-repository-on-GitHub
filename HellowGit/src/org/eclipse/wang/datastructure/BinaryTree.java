@@ -1,4 +1,4 @@
-package org.eclipse.wang;
+package org.eclipse.wang.datastructure;
 
 /**
  * http://cslibrary.stanford.edu/110/BinaryTrees.html#java

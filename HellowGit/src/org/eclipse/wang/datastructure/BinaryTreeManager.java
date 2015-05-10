@@ -1,4 +1,4 @@
-package org.eclipse.wang;
+package org.eclipse.wang.datastructure;
 
 public class BinaryTreeManager
 {

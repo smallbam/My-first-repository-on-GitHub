@@ -10,7 +10,8 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.eclipse.wang.BinaryTree;
+import org.eclipse.wang.datastructure.BinaryTree;
+import org.eclipse.wang.net.URLClient;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -155,6 +156,13 @@ public class JunitTestCase
 
 		Assert.assertEquals(false, biTree.sameTree(biTree2));
 		Assert.assertEquals(true, biTree.sameTree(biTree3));
+	}
 
+	@Test
+	public void testURLClient()
+	{
+		URLClient client = new URLClient();
+		String yahoo = client.getDocumentAt("http://www.yahoo.com");
+		System.out.println(yahoo);
 	}
 }
