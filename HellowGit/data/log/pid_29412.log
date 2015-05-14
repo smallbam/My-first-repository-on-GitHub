@@ -1,0 +1,98 @@
+2015-05-14 11:29:31
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.20-b23 mixed mode):
+
+"DestroyJavaVM" #12 prio=5 os_prio=0 tid=0x0000000001cbe000 nid=0x2034 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"B" #11 prio=5 os_prio=0 tid=0x00000000189ac000 nid=0x748c waiting for monitor entry [0x00000000194ef000]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.eclipse.wang.concurrent.DeadThread.methodA(DeadThread.java:23)
+	- waiting to lock <0x00000000d5b56f08> (a java.lang.Object)
+	- locked <0x00000000d5b56ef8> (a java.lang.Object)
+	at org.eclipse.wang.concurrent.DeadThread.run(DeadThread.java:14)
+	at java.lang.Thread.run(Thread.java:745)
+
+"A" #10 prio=5 os_prio=0 tid=0x00000000189a7000 nid=0x7284 waiting for monitor entry [0x000000001994e000]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.eclipse.wang.concurrent.DeadThread.methodB(DeadThread.java:34)
+	- waiting to lock <0x00000000d5b56ef8> (a java.lang.Object)
+	- locked <0x00000000d5b56f08> (a java.lang.Object)
+	at org.eclipse.wang.concurrent.DeadThread.run(DeadThread.java:15)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Service Thread" #9 daemon prio=9 os_prio=0 tid=0x0000000018984000 nid=0x7df8 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" #8 daemon prio=9 os_prio=2 tid=0x000000001896a000 nid=0x5a50 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #7 daemon prio=9 os_prio=2 tid=0x0000000018917000 nid=0x6e00 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #6 daemon prio=9 os_prio=2 tid=0x00000000174ba800 nid=0x7b44 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Attach Listener" #5 daemon prio=5 os_prio=2 tid=0x00000000174b9000 nid=0x7458 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=2 tid=0x0000000018909000 nid=0x7be4 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=1 tid=0x0000000017454800 nid=0x49f0 in Object.wait() [0x00000000187ef000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000000d5a06280> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:142)
+	- locked <0x00000000d5a06280> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:158)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" #2 daemon prio=10 os_prio=2 tid=0x000000001744b800 nid=0x7e78 in Object.wait() [0x00000000188ff000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000000d5a05cf0> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:157)
+	- locked <0x00000000d5a05cf0> (a java.lang.ref.Reference$Lock)
+
+"VM Thread" os_prio=2 tid=0x0000000017445800 nid=0x7fdc runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=0 tid=0x000000000236c800 nid=0x7578 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=0 tid=0x000000000236e000 nid=0x7964 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=0 tid=0x000000000236f800 nid=0x6464 runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=0 tid=0x0000000002371000 nid=0x70b8 runnable 
+
+"VM Periodic Task Thread" os_prio=2 tid=0x000000001898b800 nid=0x711c waiting on condition 
+
+JNI global references: 9
+
+
+Found one Java-level deadlock:
+=============================
+"B":
+  waiting to lock monitor 0x0000000017452008 (object 0x00000000d5b56f08, a java.lang.Object),
+  which is held by "A"
+"A":
+  waiting to lock monitor 0x0000000017450b68 (object 0x00000000d5b56ef8, a java.lang.Object),
+  which is held by "B"
+
+Java stack information for the threads listed above:
+===================================================
+"B":
+	at org.eclipse.wang.concurrent.DeadThread.methodA(DeadThread.java:23)
+	- waiting to lock <0x00000000d5b56f08> (a java.lang.Object)
+	- locked <0x00000000d5b56ef8> (a java.lang.Object)
+	at org.eclipse.wang.concurrent.DeadThread.run(DeadThread.java:14)
+	at java.lang.Thread.run(Thread.java:745)
+"A":
+	at org.eclipse.wang.concurrent.DeadThread.methodB(DeadThread.java:34)
+	- waiting to lock <0x00000000d5b56ef8> (a java.lang.Object)
+	- locked <0x00000000d5b56f08> (a java.lang.Object)
+	at org.eclipse.wang.concurrent.DeadThread.run(DeadThread.java:15)
+	at java.lang.Thread.run(Thread.java:745)
+
+Found 1 deadlock.
+

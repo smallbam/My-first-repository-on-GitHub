@@ -1,0 +1,84 @@
+2015-05-14 11:04:10
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.20-b23 mixed mode):
+
+"DestroyJavaVM" #12 prio=5 os_prio=0 tid=0x000000000051e000 nid=0x3e84 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"B" #11 prio=5 os_prio=0 tid=0x0000000018b68800 nid=0x2ea8 waiting for monitor entry [0x000000001954f000]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.eclipse.wang.concurrent.MyThread.run(MyThread.java:29)
+	- waiting to lock <0x0000000080e02830> (a org.eclipse.wang.concurrent.MyThread)
+	at java.lang.Thread.run(Thread.java:745)
+
+"A" #10 prio=5 os_prio=0 tid=0x0000000018b67800 nid=0x7284 runnable [0x000000001999e000]
+   java.lang.Thread.State: RUNNABLE
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(FileOutputStream.java:315)
+	at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:82)
+	at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:140)
+	- locked <0x0000000080e07140> (a java.io.BufferedOutputStream)
+	at java.io.PrintStream.write(PrintStream.java:482)
+	- locked <0x0000000080e04388> (a java.io.PrintStream)
+	at sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:221)
+	at sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:291)
+	at sun.nio.cs.StreamEncoder.flushBuffer(StreamEncoder.java:104)
+	- locked <0x0000000080e06818> (a java.io.OutputStreamWriter)
+	at java.io.OutputStreamWriter.flushBuffer(OutputStreamWriter.java:185)
+	at java.io.PrintStream.write(PrintStream.java:527)
+	- eliminated <0x0000000080e04388> (a java.io.PrintStream)
+	at java.io.PrintStream.print(PrintStream.java:669)
+	at java.io.PrintStream.println(PrintStream.java:806)
+	- locked <0x0000000080e04388> (a java.io.PrintStream)
+	at org.eclipse.wang.concurrent.MyThread.run(MyThread.java:31)
+	- locked <0x0000000080e02830> (a org.eclipse.wang.concurrent.MyThread)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Service Thread" #9 daemon prio=9 os_prio=0 tid=0x0000000018b26000 nid=0x7398 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread2" #8 daemon prio=9 os_prio=2 tid=0x0000000018ab9000 nid=0x792c waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #7 daemon prio=9 os_prio=2 tid=0x0000000018ab7000 nid=0x7a78 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #6 daemon prio=9 os_prio=2 tid=0x000000001781d800 nid=0x13a4 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Attach Listener" #5 daemon prio=5 os_prio=2 tid=0x0000000017819000 nid=0x74e8 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=2 tid=0x0000000018aa9000 nid=0x7300 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=1 tid=0x00000000177b4800 nid=0x34c0 in Object.wait() [0x0000000018a9e000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000080e03290> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:142)
+	- locked <0x0000000080e03290> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:158)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" #2 daemon prio=10 os_prio=2 tid=0x00000000177ab800 nid=0x7fb8 in Object.wait() [0x000000001871f000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x0000000080e03320> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:157)
+	- locked <0x0000000080e03320> (a java.lang.ref.Reference$Lock)
+
+"VM Thread" os_prio=2 tid=0x00000000177a5800 nid=0x7ce8 runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=0 tid=0x000000000246c800 nid=0x7fb4 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=0 tid=0x000000000246e000 nid=0x7bd4 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=0 tid=0x000000000246f800 nid=0x42bc runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=0 tid=0x0000000002471000 nid=0x7ed8 runnable 
+
+"VM Periodic Task Thread" os_prio=2 tid=0x0000000018b33800 nid=0x53bc waiting on condition 
+
+JNI global references: 10
+
