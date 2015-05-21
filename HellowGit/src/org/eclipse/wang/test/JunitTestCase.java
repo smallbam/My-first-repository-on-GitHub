@@ -10,7 +10,11 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.eclipse.wang.Consts;
 import org.eclipse.wang.datastructure.BinaryTree;
+import org.eclipse.wang.db.dao.PlayerDAO;
+import org.eclipse.wang.db.manager.HibernateManager;
+import org.eclipse.wang.db.model.PlayerModel;
 import org.eclipse.wang.net.URLClient;
 import org.junit.Assert;
 import org.junit.Test;
@@ -164,5 +168,36 @@ public class JunitTestCase
 		URLClient client = new URLClient();
 		String yahoo = client.getDocumentAt("http://www.yahoo.com");
 		System.out.println(yahoo);
+	}
+
+	@Test
+	public void testDBAction()
+	{
+		PlayerModel player = PlayerDAO.loadByPlayerId("player_001");
+		if (player == null)
+		{
+			PlayerModel playerModel = new PlayerModel();
+			playerModel.setId("player_001");
+			playerModel.setLevel(100);
+			playerModel.setUnitType(Consts.PLAYER_TYPE);
+			playerModel.setName("playerA");
+
+			HibernateManager.txBegin();
+			PlayerDAO.save(playerModel);
+			HibernateManager.txCommit();
+		}
+
+		PlayerDAO.loadByPlayerId("player_001");
+		PlayerDAO.loadByPlayerId("player_001");
+		PlayerDAO.loadByPlayerId("player_001");
+		PlayerDAO.loadByPlayerId("player_001");
+
+		Assert.assertEquals("player_001", PlayerDAO.loadByPlayerId("player_001").getId());
+
+		player = PlayerDAO.loadByPlayerId("player_001");
+		HibernateManager.txBegin();
+		PlayerDAO.delete(player);
+		HibernateManager.txCommit();
+		Assert.assertNull("player exist, not delete!", PlayerDAO.loadByPlayerId("player_001"));
 	}
 }
