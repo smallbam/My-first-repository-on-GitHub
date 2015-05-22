@@ -43,8 +43,8 @@ public class HibernateManager
 					{
 						e.printStackTrace();
 					}
-					s = sessionFactory.openSession();
 				}
+				s = sessionFactory.openSession();
 			}
 			catch (HibernateException e)
 			{
@@ -148,5 +148,54 @@ public class HibernateManager
 	{
 		Session session = getSession();
 		session.flush();
+	}
+
+	// just for test
+	public static void mian(String[] str)
+	{
+		Runnable r1 = new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				try
+				{
+					Thread.sleep(2000L);
+				}
+				catch (InterruptedException e)
+				{
+					e.printStackTrace();
+				}
+				HibernateManager.getSession();
+			}
+		};
+
+		Runnable r2 = new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				HibernateManager.getSession();
+				try
+				{
+					Thread.sleep(1000L);
+				}
+				catch (InterruptedException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		};
+
+		// Each thread holds an implicit reference to its copy of a thread-local variable 
+		// as long as the thread is alive and the ThreadLocal instance is accessible; 
+		// after a thread goes away, all of its copies of thread-local instances 
+		// are subject to garbage collection (unless other references to these copies exist).
+		Thread t1 = new Thread(r1, "Thread_A");
+		Thread t2 = new Thread(r1, "Thread_B");
+		Thread t3 = new Thread(r2, "Thread_C");
+		t1.start();
+		t2.start();
+		t3.start();
 	}
 }
