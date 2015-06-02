@@ -1,5 +1,7 @@
 package org.eclipse.wang.db.model;
 
+import java.util.Date;
+
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
@@ -14,6 +16,8 @@ public class CreatureModel extends BasicModel
 	protected int level;
 
 	protected int unitType;
+
+	private Date createTime;
 
 	public String getId()
 	{
@@ -53,5 +57,15 @@ public class CreatureModel extends BasicModel
 	public void setUnitType(int unitType)
 	{
 		this.unitType = unitType;
+	}
+
+	public Date getCreateTime()
+	{
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime)
+	{
+		this.createTime = createTime;
 	}
 }

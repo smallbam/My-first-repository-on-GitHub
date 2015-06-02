@@ -200,4 +200,13 @@ public class JunitTestCase
 		HibernateManager.txCommit();
 		Assert.assertNull("player exist, not delete!", PlayerDAO.loadByPlayerId("player_001"));
 	}
+
+	/**
+	 * just test load DB
+	 */
+	@Test
+	public void testLoadDB()
+	{
+		HibernateManager.getSession();
+	}
 }
