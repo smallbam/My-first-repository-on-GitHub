@@ -29,4 +29,9 @@ public class DBCfg
 	{
 		return prop;
 	}
+
+	public static boolean isUseApplicationCache()
+	{
+		return Boolean.valueOf(prop.getProperty("UseApplicationCache"));
+	}
 }

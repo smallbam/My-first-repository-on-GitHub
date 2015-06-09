@@ -1,5 +1,5 @@
 /**
- * hibernate + mysql + java example
+ * hibernate + mysql + java + ehcache example
  * @author super
  *
  */

@@ -5,6 +5,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
+//@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "players", uniqueConstraints = { @UniqueConstraint(columnNames = { "id" }),
 		@UniqueConstraint(columnNames = { "name" }) })
 public class PlayerModel extends CreatureModel

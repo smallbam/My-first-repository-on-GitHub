@@ -12,7 +12,7 @@ import java.util.Set;
 
 import org.eclipse.wang.Consts;
 import org.eclipse.wang.datastructure.BinaryTree;
-import org.eclipse.wang.db.dao.PlayerDAO;
+import org.eclipse.wang.db.DBAction;
 import org.eclipse.wang.db.manager.HibernateManager;
 import org.eclipse.wang.db.model.PlayerModel;
 import org.eclipse.wang.net.URLClient;
@@ -173,7 +173,7 @@ public class JunitTestCase
 	@Test
 	public void testDBAction()
 	{
-		PlayerModel player = PlayerDAO.loadByPlayerId("player_001");
+		PlayerModel player = DBAction.loadPlayerModelById("player_001");
 		if (player == null)
 		{
 			PlayerModel playerModel = new PlayerModel();
@@ -181,24 +181,19 @@ public class JunitTestCase
 			playerModel.setLevel(100);
 			playerModel.setUnitType(Consts.PLAYER_TYPE);
 			playerModel.setName("playerA");
-
-			HibernateManager.txBegin();
-			PlayerDAO.save(playerModel);
-			HibernateManager.txCommit();
+			DBAction.savePlayerModel(playerModel);
 		}
 
-		PlayerDAO.loadByPlayerId("player_001");
-		PlayerDAO.loadByPlayerId("player_001");
-		PlayerDAO.loadByPlayerId("player_001");
-		PlayerDAO.loadByPlayerId("player_001");
+		DBAction.loadPlayerModelById("player_001");
+		DBAction.loadPlayerModelById("player_001");
+		DBAction.loadPlayerModelById("player_001");
+		DBAction.loadPlayerModelById("player_001");
 
-		Assert.assertEquals("player_001", PlayerDAO.loadByPlayerId("player_001").getId());
+		Assert.assertEquals("player_001", DBAction.loadPlayerModelById("player_001").getId());
 
-		player = PlayerDAO.loadByPlayerId("player_001");
-		HibernateManager.txBegin();
-		PlayerDAO.delete(player);
-		HibernateManager.txCommit();
-		Assert.assertNull("player exist, not delete!", PlayerDAO.loadByPlayerId("player_001"));
+		player = DBAction.loadPlayerModelById("player_001");
+		DBAction.deletePlayerModel(player);
+		Assert.assertNull("player exist, not delete!", DBAction.loadPlayerModelById("player_001"));
 	}
 
 	/**
