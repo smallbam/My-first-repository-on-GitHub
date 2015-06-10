@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!DOCTYPE student SYSTEM "testdtd.dtd">
+<student>
+	<name>张三</name>
+	<age>24</age>
+</student>
