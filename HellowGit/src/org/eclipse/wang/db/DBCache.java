@@ -2,6 +2,7 @@ package org.eclipse.wang.db;
 
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Ehcache;
 import net.sf.ehcache.Element;
 
 import org.eclipse.wang.db.manager.DBCfg;
@@ -24,6 +25,14 @@ public class DBCache
 			singletonManager = CacheManager.create();
 		}
 		playerModelCache = singletonManager.getCache("playerModelCache");
+		if (playerModelCache == null)
+		{
+			System.err
+					.println("xxsuper playerModelCache is null, i do not know why my canche config from xml is null");
+			Ehcache myCache = new Cache("playerModelCache", 2, true, true, 0, 0);
+			singletonManager.addCache(myCache);
+			playerModelCache = singletonManager.getCache("playerModelCache");
+		}
 	}
 
 	public static PlayerModel getPlayerModel(String playerId)

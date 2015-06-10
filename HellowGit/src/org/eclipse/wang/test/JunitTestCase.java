@@ -204,4 +204,58 @@ public class JunitTestCase
 	{
 		HibernateManager.getSession();
 	}
+
+	@Test
+	public void testOverMaxElementsInMemory()
+	{
+		PlayerModel player = DBAction.loadPlayerModelById("player_001");
+		if (player == null)
+		{
+			PlayerModel playerModel = new PlayerModel();
+			playerModel.setId("player_001");
+			playerModel.setLevel(100);
+			playerModel.setUnitType(Consts.PLAYER_TYPE);
+			playerModel.setName("playerA");
+			DBAction.savePlayerModel(playerModel);
+		}
+
+		player = DBAction.loadPlayerModelById("player_002");
+		if (player == null)
+		{
+			PlayerModel playerModel = new PlayerModel();
+			playerModel.setId("player_002");
+			playerModel.setLevel(99);
+			playerModel.setUnitType(Consts.PLAYER_TYPE);
+			playerModel.setName("playerB");
+			DBAction.savePlayerModel(playerModel);
+		}
+
+		player = DBAction.loadPlayerModelById("player_003");
+		if (player == null)
+		{
+			PlayerModel playerModel = new PlayerModel();
+			playerModel.setId("player_003");
+			playerModel.setLevel(98);
+			playerModel.setUnitType(Consts.PLAYER_TYPE);
+			playerModel.setName("playerC");
+			DBAction.savePlayerModel(playerModel);
+		}
+
+		player = DBAction.loadPlayerModelById("player_004");
+		if (player == null)
+		{
+			PlayerModel playerModel = new PlayerModel();
+			playerModel.setId("player_004");
+			playerModel.setLevel(97);
+			playerModel.setUnitType(Consts.PLAYER_TYPE);
+			playerModel.setName("playerD");
+			DBAction.savePlayerModel(playerModel);
+		}
+
+		DBAction.loadPlayerModelById("player_001");
+		DBAction.loadPlayerModelById("player_002");
+		DBAction.loadPlayerModelById("player_003");
+		DBAction.loadPlayerModelById("player_004");
+		DBAction.loadPlayerModelById("player_005");
+	}
 }
