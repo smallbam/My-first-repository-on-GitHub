@@ -5,3 +5,8 @@
  *
  */
 package org.eclipse.wang.designpattern;
+
+/**
+ * OOP原则：“优先使用对象聚集，而不是继承”
+ * 对象应该只对自己负责
+ */

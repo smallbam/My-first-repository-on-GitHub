@@ -151,7 +151,7 @@ public class HibernateManager
 	}
 
 	// just for test
-	public static void mian(String[] str)
+	public static void main(String[] str)
 	{
 		Runnable r1 = new Runnable()
 		{
