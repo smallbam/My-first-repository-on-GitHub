@@ -3,7 +3,7 @@
   <groupId>HelloGit</groupId>
   <artifactId>HelloGit</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <description>mavenbeginning</description>
+  <description>maven start</description>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
